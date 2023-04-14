@@ -21,8 +21,8 @@ public class Contato {
 	@Column(name="ds_email", length = 150, nullable = false)
 	private String email;
 	
-	@Column(name="nr_telefone", precision = 11, nullable = false)
-	private Integer telefone;
+	@Column(name="nr_telefone", length = 11, nullable = false)
+	private String telefone;
 	
 	// relacionamento autor
 
@@ -42,15 +42,15 @@ public class Contato {
 		this.email = email;
 	}
 
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	public Contato(Long id, String email, Integer telefone) {
+	public Contato(Long id, String email, String telefone) {
 		super();
 		this.id = id;
 		this.email = email;
