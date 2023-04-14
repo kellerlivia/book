@@ -1,11 +1,7 @@
 package br.com.fiap.book.dao;
 
-import br.com.fiap.book.entity.Autor;
+import br.com.fiap.book.entities.Autor;
 
-public class AutorDAO extends GenericDAO<Autor, Long> {
-    
-    public AutorDAO() {
-        super(Autor.class);
-    }
-    
+public interface AutorDao extends GenericDao<Autor, Long>{
+
 }

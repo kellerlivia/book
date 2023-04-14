@@ -1,9 +1,7 @@
-import javax.persistence.EntityManager;
+package br.com.fiap.book.dao;
 
-public class LivroDao extends GenericDao<Livro> {
+import br.com.fiap.book.entities.Livro;
 
-    public LivroDao(EntityManager entityManager) {
-        super(Livro.class, entityManager);
-    }
+public interface LivroDao extends GenericDao<Livro, Long> {
 
 }

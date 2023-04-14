@@ -1,9 +1,7 @@
-import javax.persistence.EntityManager;
+package br.com.fiap.book.dao;
 
-public class UsuarioDao extends GenericDao<Usuario> {
+import br.com.fiap.book.entities.Usuario;
 
-    public UsuarioDao(EntityManager entityManager) {
-        super(Usuario.class, entityManager);
-    }
-    
+public interface UsuarioDao extends GenericDao<Usuario, Long> {
+
 }

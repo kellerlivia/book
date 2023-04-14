@@ -1,11 +1,7 @@
 package br.com.fiap.book.dao;
 
-import br.com.fiap.book.entity.Categoria;
+import br.com.fiap.book.entities.Categoria;
 
-public class CategoriaDAO extends GenericDAO<Categoria, Long> {
-    
-    public CategoriaDAO() {
-        super(Categoria.class);
-    }
-    
+public interface CategoriaDao extends GenericDao<Categoria, Long>{
+
 }
