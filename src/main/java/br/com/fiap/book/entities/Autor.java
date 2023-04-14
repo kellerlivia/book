@@ -9,21 +9,28 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_AUTOR")
-@SequenceGenerator(name="autor", sequenceName = "SQ_T_AUTOR", allocationSize = 1)
+@Table(name = "T_AUTOR")
+@SequenceGenerator(name = "autor", sequenceName = "SQ_T_AUTOR", allocationSize = 1)
 public class Autor {
 
 	@Id
-	@Column(name="id_autor")
+	@Column(name = "id_autor")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "autor")
 	private Long id;
-	
-	@Column(name="ds_titulo", length = 100, nullable = false)
-	private String titulo;
-	
+
+	@Column(name = "ds_nome", length = 100, nullable = false)
+	private String nome;
+
 	// relacionamento livros
-	
+
 	// relacionamento contato
+
+	public Autor(String nome) {
+		this.nome = nome;
+	}
+
+	public Autor() {
+	}
 
 	public Long getId() {
 		return id;
@@ -33,19 +40,12 @@ public class Autor {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Autor(Long id, String titulo) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-	}
-	
-	public Autor() {}
 }
