@@ -1,4 +1,4 @@
-package br.com.fiap.book.entity;
+package br.com.fiap.book.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,21 +9,24 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_AUTOR")
-@SequenceGenerator(name="autor", sequenceName = "SQ_T_AUTOR", allocationSize = 1)
-public class Autor {
+@Table(name = "T_CATEGORIA")
+@SequenceGenerator(name = "categoria", sequenceName = "SQ_T_CATEGORIA", allocationSize = 1)
+public class Categoria {
 
 	@Id
-	@Column(name="id_autor")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "autor")
+	@Column(name = "id_categoria")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria")
 	private Long id;
-	
-	@Column(name="ds_titulo", length = 100, nullable = false)
+
+	@Column(name = "ds_titulo", length = 100, nullable = false)
 	private String titulo;
-	
-	// relacionamento livros
-	
-	// relacionamento contato
+
+	public Categoria(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public Categoria() {
+	}
 
 	public Long getId() {
 		return id;
@@ -41,11 +44,4 @@ public class Autor {
 		this.titulo = titulo;
 	}
 
-	public Autor(Long id, String titulo) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-	}
-	
-	public Autor() {}
 }

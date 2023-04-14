@@ -1,4 +1,4 @@
-package br.com.fiap.book.entity;
+package br.com.fiap.book.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,22 +9,30 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_CONTATO")
-@SequenceGenerator(name="contato", sequenceName = "SQ_T_CONTATO", allocationSize = 1)
+@Table(name = "T_CONTATO")
+@SequenceGenerator(name = "contato", sequenceName = "SQ_T_CONTATO", allocationSize = 1)
 public class Contato {
 
 	@Id
-	@Column(name="id_contato")
+	@Column(name = "id_contato")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contato")
 	private Long id;
-	
-	@Column(name="ds_email", length = 150, nullable = false)
+
+	@Column(name = "ds_email", length = 150, nullable = false)
 	private String email;
-	
-	@Column(name="nr_telefone", length = 11, nullable = false)
+
+	@Column(name = "nr_telefone", length = 11, nullable = false)
 	private String telefone;
-	
+
 	// relacionamento autor
+
+	public Contato(String email, String telefone) {
+		this.email = email;
+		this.telefone = telefone;
+	}
+
+	public Contato() {
+	}
 
 	public Long getId() {
 		return id;
@@ -50,13 +58,4 @@ public class Contato {
 		this.telefone = telefone;
 	}
 
-	public Contato(Long id, String email, String telefone) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.telefone = telefone;
-	}
-
-	public Contato() {}
 }
-

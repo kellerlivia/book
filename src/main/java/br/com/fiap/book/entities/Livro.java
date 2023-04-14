@@ -1,4 +1,4 @@
-package br.com.fiap.book.entity;
+package br.com.fiap.book.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,33 +9,44 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="T_LIVRO")
-@SequenceGenerator(name="livro", sequenceName = "SQ_T_LIVRO", allocationSize = 1)
+@Table(name = "T_LIVRO")
+@SequenceGenerator(name = "livro", sequenceName = "SQ_T_LIVRO", allocationSize = 1)
 public class Livro {
 
 	@Id
-	@Column(name="id_livro")
+	@Column(name = "id_livro")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "livro")
 	private Long id;
-	
-	@Column(name="qtd_pagina", nullable = false, precision = 9)
+
+	@Column(name = "qtd_pagina", nullable = false, precision = 9)
 	private Integer quantidadePaginas;
-	
-	@Column(name="ds_titulo", length = 100, nullable = false)
+
+	@Column(name = "ds_titulo", length = 100, nullable = false)
 	private String titulo;
-    
-	@Column(name="ds_avaliacao", precision = 1)
-    private Integer avaliacao;
-    
-	@Column(name="ds_status", nullable = false, precision = 9, scale = 2)
-    private Double status;
-    
-	@Column(name="pg_atual", precision = 9, nullable = false)
-    private Integer paginaAtual;
-	
+
+	@Column(name = "ds_avaliacao", precision = 1)
+	private Integer avaliacao;
+
+	@Column(name = "ds_status", nullable = false, precision = 9, scale = 2)
+	private Double status;
+
+	@Column(name = "pg_atual", precision = 9, nullable = false)
+	private Integer paginaAtual;
+
 	// relacionamento autor
-	
+
 	// relacionamento categoria
+
+	public Livro(Integer quantidadePaginas, String titulo, Integer avaliacao, Integer paginaAtual) {
+		this.quantidadePaginas = quantidadePaginas;
+		this.titulo = titulo;
+		this.avaliacao = avaliacao;
+		this.status = ((double) paginaAtual * 100) / (double) quantidadePaginas;
+		this.paginaAtual = paginaAtual;
+	}
+
+	public Livro() {
+	}
 
 	public Long getId() {
 		return id;
@@ -85,16 +96,4 @@ public class Livro {
 		this.paginaAtual = paginaAtual;
 	}
 
-	public Livro(Long id, Integer quantidadePaginas, String titulo, Integer avaliacao, Double status,
-			Integer paginaAtual) {
-		super();
-		this.id = id;
-		this.quantidadePaginas = quantidadePaginas;
-		this.titulo = titulo;
-		this.avaliacao = avaliacao;
-		this.status = status;
-		this.paginaAtual = paginaAtual;
-	}
-	
-	public Livro() {}
 }
